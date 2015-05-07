@@ -1,0 +1,69 @@
+.auth_index, .auth_login {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #eee;
+}
+
+.form-signin {
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+.no-padding{
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+}
+
+.separator{
+    height: 15px;
+    width: 100%;
+    clear:both;
+}
+
+.header-hello-section{
+    float: right;
+    line-height: 45px;
+    margin: 0 15px;
+}
+
+.ace-scroll {
+    height: 500px;
+    overflow-y: auto;
+}
+
+.loading{
+    width: 100%;
+    height: 100%;
+    background: url(/images/preloader.gif) 50% 50% no-repeat;
+    background-size: 64px;
+}
+
+.select-item {
+    position: relative;
+    margin: 7px 0;
+    padding: 5px 10px;
+    font-size: 16px;
+    word-wrap: break-word;
+    font-weight: bold;
+    color: #669fc7;
+    border: solid 1px;
+    background: #ccc;
+}
+
+.select-item input[type=radio] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 999;
+    cursor: pointer;
+}
+
+.select-item.active {
+    background: rgb(247, 239, 239);
+}

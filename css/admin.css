@@ -1,0 +1,23 @@
+.no-padding{
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+}
+
+.separator{
+    height: 15px;
+    width: 100%;
+    clear:both;
+}
+
+.header-hello-section{
+    float: right;
+    line-height: 45px;
+    margin: 0 15px;
+}
+
+.ace-scroll {
+    height: 500px;
+    overflow-y: auto;
+}

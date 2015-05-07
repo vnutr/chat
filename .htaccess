@@ -1,0 +1,93 @@
+RedirectMatch 403 /\.git.*$
+Options +FollowSymLinks -Indexes
+
+<IfModule mod_php5.c>
+  php_flag short_open_tag On
+  php_flag magic_quotes_gpc Off
+  php_flag magic_quotes_runtime Off
+  php_flag magic_quotes_sybase Off
+  php_flag track_vars On
+  php_flag register_globals Off
+  #php_value include_path .
+  php_value post_max_size 100M
+  php_value upload_max_filesize 50M
+</IfModule>
+<IfModule mod_php4.c>
+  php_flag short_open_tag On
+  php_flag magic_quotes_gpc Off
+  php_flag magic_quotes_runtime Off
+  php_flag magic_quotes_sybase Off
+  php_flag track_vars On
+  php_flag register_globals Off
+  #php_value include_path .
+  php_value post_max_size 100M
+  php_value upload_max_filesize 50M
+</IfModule>
+
+# Set the default handler.
+DirectoryIndex index.php
+
+# Various rewrite rules.
+<IfModule mod_rewrite.c>
+  RewriteEngine on
+  RewriteBase /
+
+  RewriteEngine on
+   RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond $1 !^(index\.php|uploads|kcfinder|assets|avatars|images|fonts|css|js|robots\.txt)
+  RewriteRule ^(.*)$ /index.php/$1 [L]
+</IfModule>
+
+<IfModule !mod_rewrite.c>
+  # If we don't have mod_rewrite installed, all 404's
+  # can be sent to index.php, and everything works as normal.
+  # Submitted by: ElliotHaughin
+  ErrorDocument 404 index.php
+</IfModule>
+
+<IfModule mod_deflate.c>
+  # Compress HTML, CSS, JavaScript, Text, XML and fonts
+  AddOutputFilterByType DEFLATE application/javascript
+  AddOutputFilterByType DEFLATE application/rss+xml
+  AddOutputFilterByType DEFLATE application/vnd.ms-fontobject
+  AddOutputFilterByType DEFLATE application/x-font
+  AddOutputFilterByType DEFLATE application/x-font-opentype
+  AddOutputFilterByType DEFLATE application/x-font-otf
+  AddOutputFilterByType DEFLATE application/x-font-truetype
+  AddOutputFilterByType DEFLATE application/x-font-ttf
+  AddOutputFilterByType DEFLATE application/x-javascript
+  AddOutputFilterByType DEFLATE application/xhtml+xml
+  AddOutputFilterByType DEFLATE application/xml
+  AddOutputFilterByType DEFLATE font/opentype
+  AddOutputFilterByType DEFLATE font/otf
+  AddOutputFilterByType DEFLATE font/ttf
+  AddOutputFilterByType DEFLATE image/svg+xml
+  AddOutputFilterByType DEFLATE image/x-icon
+  AddOutputFilterByType DEFLATE text/css
+  AddOutputFilterByType DEFLATE text/html
+  AddOutputFilterByType DEFLATE text/javascript
+  AddOutputFilterByType DEFLATE text/plain
+  AddOutputFilterByType DEFLATE text/xml
+
+  # Remove browser bugs (only needed for really old browsers)
+  BrowserMatch ^Mozilla/4 gzip-only-text/html
+  BrowserMatch ^Mozilla/4\.0[678] no-gzip
+  BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+  Header append Vary User-Agent
+</IfModule>
+
+<IfModule mod_expires.c>
+    ExpiresActive On
+    #ExpiresDefault "access plus 1 month"
+    ExpiresByType image/x-icon "access plus 2 months"
+    ExpiresByType image/jpeg "access plus 2 months"
+    ExpiresByType image/png "access plus 2 months"
+    ExpiresByType image/gif "access plus 2 months"
+    ExpiresByType application/x-shockwave-flash "access plus 2 months"
+    ExpiresByType text/css "access plus 2 months"
+    ExpiresByType text/javascript "access plus 2 months"
+    ExpiresByType application/javascript "access plus 2 months"
+    ExpiresByType application/x-javascript "access plus 2 months"
+    #ExpiresByType text/html "access plus 2 months"
+    #ExpiresByType application/xhtml+xml "access plus 2 months"
+</IfModule>
